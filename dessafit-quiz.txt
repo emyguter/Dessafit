@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>DessaFit Suplementos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --pink: #FF2D9B;
+    --pink-dark: rgba(255,45,155,0.12);
+    --pink-mid: #d91e80;
+    --bg: #0A0A0A;
+    --card: #111111;
+    --card2: #181818;
+    --border: #252525;
+    --white: #ffffff;
+    --gray: #777777;
+    --dgray: #444444;
+    --xgray: #1e1e1e;
+  }
+  html, body {
+    min-height: 100%;
+    background: #060606;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+  }
+  body { padding: 20px 0; }
+  .phone {
+    width: 390px;
+    min-height: 700px;
+    background: var(--bg);
+    border-radius: 44px;
+    overflow: hidden;
+    box-shadow: 0 40px 80px rgba(0,0,0,.7), 0 0 0 1px #1e1e1e;
+  }
+  .status-bar {
+    height: 44px;
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 28px;
+  }
+  .status-time { font-size: 15px; font-weight: 700; color: var(--white); }
+  .status-icons { display: flex; gap: 5px; align-items: center; }
+  .status-icons svg { width: 16px; height: 16px; fill: var(--white); }
+  .header {
+    padding: 4px 24px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo { font-size: 22px; font-weight: 800; color: var(--white); letter-spacing: -.5px; line-height: 1; }
+  .logo-fit { color: var(--pink); }
+  .header-badge {
+    background: var(--pink);
+    color: var(--white);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 20px;
+    letter-spacing: .3px;
+  }
+  .progress-wrap { padding: 14px 24px 0; }
+  .prog-bar { height: 3px; background: var(--xgray); border-radius: 3px; }
+  .prog-fill { height: 100%; background: var(--pink); border-radius: 3px; transition: width .4s cubic-bezier(.4,0,.2,1); }
+  .prog-meta { display: flex; justify-content: space-between; margin-top: 7px; }
+  .prog-label { font-size: 10px; color: var(--pink); letter-spacing: 1px; font-weight: 700; }
+  .prog-steps { font-size: 10px; color: var(--dgray); font-weight: 500; }
+  .screen { padding: 18px 24px 32px; }
+  .step { display: none; }
+  .step.on { display: block; animation: fadeUp .25s ease; }
+  @keyframes fadeUp { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+  .q-title { font-size: 20px; font-weight: 800; color: var(--white); line-height: 1.25; margin-bottom: 4px; letter-spacing: -.3px; }
+  .q-title span { color: var(--pink); }
+  .q-sub { font-size: 12px; color: var(--gray); margin-bottom: 18px; }
+  .opts { display: flex; flex-direction: column; gap: 10px; margin-bottom: 18px; }
+  .opt {
+    background: var(--card);
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    padding: 14px 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    transition: border-color .15s, background .15s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .opt:active { transform: scale(.98); }
+  .opt.sel { border-color: var(--pink); background: var(--pink-dark); }
+  .opt-icon {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--card2);
+    border: 1.5px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: all .15s;
+  }
+  .opt-icon svg { width: 14px; height: 14px; fill: var(--dgray); transition: fill .15s; }
+  .opt.sel .opt-icon { background: var(--pink); border-color: var(--pink); }
+  .opt.sel .opt-icon svg { fill: var(--white); }
+  .opt-txt { font-size: 14px; color: var(--gray); font-weight: 600; transition: color .15s; }
+  .opt.sel .opt-txt { color: var(--white); }
+  .btn {
+    width: 100%;
+    padding: 16px;
+    background: var(--pink);
+    color: var(--white);
+    border: none;
+    border-radius: 14px;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    opacity: .2;
+    pointer-events: none;
+    transition: opacity .2s, transform .1s;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .btn svg { width: 16px; height: 16px; fill: white; }
+  .btn.on { opacity: 1; pointer-events: all; }
+  .btn.on:active { transform: scale(.98); background: var(--pink-mid); }
+  .loading-wrap { padding: 60px 24px; text-align: center; }
+  .spinner-ring {
+    width: 48px; height: 48px;
+    border: 3px solid var(--xgray);
+    border-top-color: var(--pink);
+    border-radius: 50%;
+    animation: spin .7s linear infinite;
+    margin: 0 auto 20px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .load-title { font-size: 15px; color: var(--white); font-weight: 700; margin-bottom: 4px; }
+  .load-sub { font-size: 12px; color: #444; }
+  .ai-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 10px; color: var(--pink); letter-spacing: 1px; font-weight: 700;
+    margin-bottom: 10px;
+    background: var(--pink-dark);
+    border: 1px solid rgba(255,45,155,.25);
+    border-radius: 20px; padding: 4px 10px;
+  }
+  .ai-dot { width: 6px; height: 6px; background: var(--pink); border-radius: 50%; animation: pulse 1.5s ease infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+  .kit-name { font-size: 22px; font-weight: 800; color: var(--white); margin-bottom: 6px; letter-spacing: -.3px; line-height: 1.2; }
+  .kit-desc { font-size: 12px; color: var(--gray); line-height: 1.6; margin-bottom: 18px; }
+  .prod-card {
+    background: var(--card);
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    padding: 14px; margin-bottom: 10px;
+    display: flex; gap: 12px; align-items: flex-start;
+    animation: fadeUp .3s ease both;
+  }
+  .prod-card:nth-child(1){animation-delay:.05s}
+  .prod-card:nth-child(2){animation-delay:.12s}
+  .prod-card:nth-child(3){animation-delay:.19s}
+  .prod-num {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--pink);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; color: var(--white); font-weight: 800;
+    flex-shrink: 0; margin-top: 1px;
+  }
+  .prod-info { flex: 1; min-width: 0; }
+  .prod-name { font-size: 13px; font-weight: 700; color: var(--white); margin-bottom: 3px; line-height: 1.35; }
+  .prod-why { font-size: 11px; color: var(--gray); line-height: 1.4; margin-bottom: 5px; }
+  .prod-brand { font-size: 10px; color: var(--pink); font-weight: 700; letter-spacing: .5px; }
+  .prod-price { font-size: 13px; font-weight: 800; color: var(--white); flex-shrink: 0; }
+  .total-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 0; border-top: 1px solid var(--xgray);
+    margin-top: 4px; margin-bottom: 16px;
+  }
+  .total-label { font-size: 12px; color: var(--dgray); font-weight: 500; }
+  .total-val { font-size: 24px; font-weight: 800; color: var(--white); letter-spacing: -.5px; }
+  .cta-btn {
+    width: 100%; padding: 17px;
+    background: var(--pink); color: var(--white);
+    border: none; border-radius: 14px;
+    font-size: 15px; font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer; margin-bottom: 10px;
+    transition: background .2s, transform .1s;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .cta-btn svg { width: 16px; height: 16px; fill: white; }
+  .cta-btn:active { background: var(--pink-mid); transform: scale(.98); }
+  .restart-btn {
+    width: 100%; padding: 14px;
+    background: transparent; color: var(--dgray);
+    border: 1.5px solid var(--border);
+    border-radius: 14px; font-size: 13px;
+    font-family: 'Poppins', sans-serif; font-weight: 600; cursor: pointer;
+    transition: all .15s;
+  }
+  .restart-btn:hover { color: var(--gray); border-color: #333; }
+  .partner-row {
+    display: flex; gap: 8px; margin-top: 16px;
+    padding-top: 16px; border-top: 1px solid var(--xgray);
+    align-items: center; flex-wrap: wrap;
+  }
+  .partner-label { font-size: 10px; color: #333; font-weight: 500; }
+  .partner-tag { font-size: 10px; color: #444; border: 1px solid var(--xgray); border-radius: 20px; padding: 3px 10px; font-weight: 500; }
+  .home-indicator { height: 34px; display: flex; align-items: center; justify-content: center; }
+  .home-bar { width: 130px; height: 5px; background: #222; border-radius: 3px; }
+  @media (max-width: 430px) {
+    body { padding: 0; background: var(--bg); }
+    .phone { width: 100%; min-height: 100vh; border-radius: 0; box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+<div class="phone">
+  <div class="status-bar">
+    <div class="status-time" id="clock">9:41</div>
+    <div class="status-icons">
+      <svg viewBox="0 0 24 24"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3a4.237 4.237 0 00-6 0zm-4-4l2 2a7.074 7.074 0 0110 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg>
+    </div>
+  </div>
+
+  <div class="header">
+    <div class="logo">Dessa<span class="logo-fit">Fit</span></div>
+    <div class="header-badge">Suplementos</div>
+  </div>
+
+  <div class="progress-wrap">
+    <div class="prog-bar"><div class="prog-fill" id="prog" style="width:0%"></div></div>
+    <div class="prog-meta">
+      <div class="prog-label" id="prog-label">OBJETIVO</div>
+      <div class="prog-steps" id="prog-steps">1 de 4</div>
+    </div>
+  </div>
+
+  <div class="screen">
+
+    <div class="step on" id="s1">
+      <div class="q-title">Qual é o seu <span>objetivo</span> principal?</div>
+      <div class="q-sub">Isso define o seu kit base</div>
+      <div class="opts" data-step="1">
+        <div class="opt" data-val="massa">
+          <div class="opt-icon"><svg viewBox="0 0 24 24"><path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z"/></svg></div>
+          <div class="opt-txt">Ganhar massa muscular</div>
+        </div>
+        <div class="opt" data-val="definir">
+          <div class="opt-icon"><svg viewBox="0 0 24 24"><path d="M13.49 5.48c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm-3.6 13.9l1-4.4 2.1 2v6h2v-7.5l-2.1-2 .6-3c1.3 1.5 3.3 2.5 5.5 2.5v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1l-5.2 2.2v4.7h2v-3.4l1.8-.7-1.6 8.1-4.9-1-.4 2 7 1.4z"/></svg></div>
+          <div class="opt-txt">Emagrecer e definir</div>
+        </div>
+        <div class="opt" data-val="performance">
+          <div class="opt-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></div>
+          <div class="opt-txt">Melhorar performance</div>
+        </div>
+        <div class="opt" data-val="saude">
+          <div class="opt-icon"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div>
+          <div class="opt-txt">Saúde e energia diária</div>
+        </div>
+      </div>
+      <button class="btn" id="b1"><svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>Continuar</button>
+    </div>
+
+    <div class="step" id="s2">
+      <div class="q-title">Com que <span>frequência</span> você treina?</div>
+      <div class="q-sub">Afeta dosagem e tipo de suplemento</div>
+      <div class="opts" data-step="2">
+        <div class="opt" data-val="ini"><div class="opt-icon"><svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg></div><div class="opt-txt">Estou começando agora</div></div>
+        <div class="opt" data-val="casual"><div class="opt-icon"><svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg></div><div class="opt-txt">1 a 2x por semana</div></div>
+        <div class="opt" data-val="regular"><div class="opt-icon"><svg viewBox="0 0 24 24"><path d="M13.49 5.48c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm-3.6 13.9l1-4.4 2.1 2v6h2v-7.5l-2.1-2 .6-3c1.3 1.5 3.3 2.5 5.5 2.5v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1l-5.2 2.2v4.7h2v-3.4l1.8-.7-1.6 8.1-4.9-1-.4 2 7 1.4z"/></svg></div><div class="opt-txt">3 a 4x por semana</div></div>
+        <div class="opt" data-val="heavy"><div class="opt-icon"><svg viewBox="0 0 24 24"><path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z"/></svg></div><div class="opt-txt">5x ou mais</div></div>
+      </div>
+      <button class="btn" id="b2"><svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>Continuar</button>
+    </div>
+
+    <div class="step" id="s3">
+      <div class="q-title">Tem alguma <span>restrição</span> alimentar?</div>
+      <div class="q-sub">Pra não indicar o que você não pode usar</div>
+      <div class="opts" data-step="3">
+        <div class="opt" data-val="none"><div class="opt-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div><div class="opt-txt">Nenhuma</div></div>
+        <div class="opt" data-val="lactose"><div class="opt-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg></div><div class="opt-txt">Intolerância à lactose</div></div>
+        <div class="opt" data-val="vegano"><div class="opt-icon"><svg viewBox="0 0 24 24"><path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 008 20C19 20 22 3 22 3c-1 2-8 2-8 2-5 0-7 2-7 2 2-4 6-5 6-5-.5 0-3 .5-4 2z"/></svg></div><div class="opt-txt">Vegano / vegetariano</div></div>
+        <div class="opt" data-val="gluten"><div class="opt-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg></div><div class="opt-txt">Sem glúten</div></div>
+      </div>
+      <button class="btn" id="b3"><svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>Continuar</button>
+    </div>
+
+    <div class="step" id="s4">
+      <div class="q-title">Tem alguma <span>comorbidade</span>?</div>
+      <div class="q-sub">Segurança em primeiro lugar</div>
+      <div class="opts" data-step="4">
+        <div class="opt" data-val="none"><div class="opt-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div><div class="opt-txt">Não tenho</div></div>
+        <div class="opt" data-val="hiper"><div class="opt-icon"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div><div class="opt-txt">Hipertensão</div></div>
+        <div class="opt" data-val="diabetes"><div class="opt-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg></div><div class="opt-txt">Diabetes</div></div>
+        <div class="opt" data-val="renal"><div class="opt-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg></div><div class="opt-txt">Problema renal</div></div>
+      </div>
+      <button class="btn" id="b4"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>Ver meu kit</button>
+    </div>
+
+    <div class="step" id="s-load">
+      <div class="loading-wrap">
+        <div class="spinner-ring"></div>
+        <div class="load-title" id="load-msg">Analisando seu perfil...</div>
+        <div class="load-sub">A IA está montando seu kit ideal</div>
+      </div>
+    </div>
+
+    <div class="step" id="s-result">
+      <div class="ai-badge"><div class="ai-dot"></div>KIT GERADO PELA IA</div>
+      <div class="kit-name" id="kit-name"></div>
+      <div class="kit-desc" id="kit-desc"></div>
+      <div id="prods"></div>
+      <div class="total-row">
+        <div class="total-label">Total do kit</div>
+        <div class="total-val" id="kit-total"></div>
+      </div>
+      <button class="cta-btn" onclick="window.location.href='https://www.soldiersnutrition.com.br'">
+        <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96C5 16.1 6.1 17 7 17h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63H19c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0023.46 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+        Quero este kit
+      </button>
+      <button class="restart-btn" id="restart">Refazer o quiz</button>
+      <div class="partner-row">
+        <div class="partner-label">Parceiros:</div>
+        <div class="partner-tag">Soldiers Nutrition</div>
+        <div class="partner-tag">Oficial Farma</div>
+      </div>
+    </div>
+
+  </div>
+  <div class="home-indicator"><div class="home-bar"></div></div>
+</div>
+
+<script>
+const ans = {};
+const kits = {
+  massa:{name:'Kit Força & Massa',desc:'A IA priorizou síntese proteica, força e recuperação muscular com base no seu perfil de treino.',prods:[{n:'Elite Pro Whey Concentrado 80% 1kg',why:'40g de proteína por dose — base sólida pra hipertrofia',brand:'Soldiers Nutrition',p:'R$ 89'},{n:'Creatina Monohidratada 300g',why:'Aumenta força e volume muscular — 100% pura importada',brand:'Soldiers Nutrition',p:'R$ 30'},{n:'Pré-Treino Evolution 300g',why:'Energia e foco sem crash — livre de glúten e lactose',brand:'Soldiers Nutrition',p:'R$ 40'}],total:'R$ 159'},
+  definir:{name:'Kit Definição',desc:'A IA montou uma combinação pra queimar gordura sem perder o músculo conquistado no Desafio.',prods:[{n:'Whey Protein Isolado 1kg',why:'Alta proteína, menos calorias — ideal pra definição',brand:'Oficial Farma',p:'R$ 240'},{n:'Ômega 3 60 Caps 2800mg',why:'Anti-inflamatório e suporte à queima de gordura',brand:'Soldiers Nutrition',p:'R$ 40'},{n:'Vitamina D3 + K2 manipulado',why:'Equilíbrio hormonal e imunidade durante o déficit',brand:'Oficial Farma',p:'R$ 55'}],total:'R$ 335'},
+  performance:{name:'Kit Performance',desc:'A IA priorizou energia sustentada, resistência e recuperação rápida pro seu ritmo de treino.',prods:[{n:'Pré-Treino Evolution 300g',why:'Energia, foco e resistência — 652 avaliações 5 estrelas',brand:'Soldiers Nutrition',p:'R$ 40'},{n:'Creatina Monohidratada 300g',why:'Reposição de energia celular durante esforço intenso',brand:'Soldiers Nutrition',p:'R$ 30'},{n:'Multivitamínico feminino manipulado',why:'Vitaminas e minerais essenciais pra performance',brand:'Oficial Farma',p:'R$ 65'}],total:'R$ 135'},
+  saude:{name:'Kit Bem-estar',desc:'A IA selecionou uma base de micronutrientes essenciais pra energia, imunidade e saúde geral.',prods:[{n:'Ômega 3 60 Caps 2800mg',why:'Coração, cérebro e anti-inflamatório natural',brand:'Soldiers Nutrition',p:'R$ 40'},{n:'Multivitamínico feminino manipulado',why:'Cobre deficiências nutricionais do dia a dia corrido',brand:'Oficial Farma',p:'R$ 65'},{n:'Vitamina D3 + K2 manipulado',why:'Imunidade, ossos e equilíbrio hormonal',brand:'Oficial Farma',p:'R$ 55'}],total:'R$ 160'}
+};
+const progressLabels=['OBJETIVO','FREQUÊNCIA','RESTRIÇÃO','SAÚDE','CONCLUÍDO'];
+function show(id){document.querySelectorAll('.step').forEach(s=>s.classList.remove('on'));setTimeout(()=>document.getElementById(id).classList.add('on'),10);}
+function setProgress(step){const pct=step>=5?100:(step-1)*25;document.getElementById('prog').style.width=pct+'%';document.getElementById('prog-label').textContent=progressLabels[step-1]||'CONCLUÍDO';document.getElementById('prog-steps').textContent=step<5?`${step} de 4`:'✓';}
+document.querySelectorAll('.opts').forEach(g=>{g.querySelectorAll('.opt').forEach(o=>{o.addEventListener('click',()=>{g.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));o.classList.add('sel');ans[g.dataset.step]=o.dataset.val;const btn=document.getElementById('b'+g.dataset.step);if(btn)btn.classList.add('on');});});});
+document.getElementById('b1').addEventListener('click',()=>{show('s2');setProgress(2);});
+document.getElementById('b2').addEventListener('click',()=>{show('s3');setProgress(3);});
+document.getElementById('b3').addEventListener('click',()=>{show('s4');setProgress(4);});
+document.getElementById('b4').addEventListener('click',()=>{
+  show('s-load');setProgress(5);
+  const msgs=['Analisando seu perfil...','Cruzando objetivos e restrições...','Montando o kit ideal...'];
+  let i=0;
+  const iv=setInterval(()=>{
+    if(i<msgs.length){document.getElementById('load-msg').textContent=msgs[i++];}
+    else{clearInterval(iv);const kit=kits[ans['1']]||kits.saude;document.getElementById('kit-name').textContent=kit.name;document.getElementById('kit-desc').textContent=kit.desc;document.getElementById('kit-total').textContent=kit.total;document.getElementById('prods').innerHTML=kit.prods.map((p,i)=>`<div class="prod-card"><div class="prod-num">${i+1}</div><div class="prod-info"><div class="prod-name">${p.n}</div><div class="prod-why">${p.why}</div><div class="prod-brand">${p.brand.toUpperCase()}</div></div><div class="prod-price">${p.p}</div></div>`).join('');show('s-result');}
+  },900);
+});
+document.getElementById('restart').addEventListener('click',()=>{Object.keys(ans).forEach(k=>delete ans[k]);document.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));document.querySelectorAll('.btn').forEach(b=>b.classList.remove('on'));show('s1');setProgress(1);});
+function updateClock(){const now=new Date();document.getElementById('clock').textContent=`${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}`;}
+updateClock();setInterval(updateClock,30000);setProgress(1);
+</script>
+</body>
+</html>
