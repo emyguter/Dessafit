@@ -38,34 +38,14 @@
     overflow: hidden;
     box-shadow: 0 40px 80px rgba(0,0,0,.7), 0 0 0 1px #1e1e1e;
   }
-  .status-bar {
-    height: 44px;
-    background: var(--bg);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 28px;
-  }
+  .status-bar { height: 44px; background: var(--bg); display: flex; align-items: center; justify-content: space-between; padding: 0 28px; }
   .status-time { font-size: 15px; font-weight: 700; color: var(--white); }
   .status-icons { display: flex; gap: 5px; align-items: center; }
   .status-icons svg { width: 16px; height: 16px; fill: var(--white); }
-  .header {
-    padding: 4px 24px 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+  .header { padding: 4px 24px 0; display: flex; align-items: center; justify-content: space-between; }
   .logo { font-size: 22px; font-weight: 800; color: var(--white); letter-spacing: -.5px; line-height: 1; }
   .logo-fit { color: var(--pink); }
-  .header-badge {
-    background: var(--pink);
-    color: var(--white);
-    font-size: 10px;
-    font-weight: 700;
-    padding: 5px 12px;
-    border-radius: 20px;
-    letter-spacing: .3px;
-  }
+  .header-badge { background: var(--pink); color: var(--white); font-size: 10px; font-weight: 700; padding: 5px 12px; border-radius: 20px; }
   .progress-wrap { padding: 14px 24px 0; }
   .prog-bar { height: 3px; background: var(--xgray); border-radius: 3px; }
   .prog-fill { height: 100%; background: var(--pink); border-radius: 3px; transition: width .4s cubic-bezier(.4,0,.2,1); }
@@ -80,137 +60,90 @@
   .q-title span { color: var(--pink); }
   .q-sub { font-size: 12px; color: var(--gray); margin-bottom: 18px; }
   .opts { display: flex; flex-direction: column; gap: 10px; margin-bottom: 18px; }
-  .opt {
-    background: var(--card);
-    border: 1.5px solid var(--border);
-    border-radius: 14px;
-    padding: 14px 16px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 13px;
-    transition: border-color .15s, background .15s;
-    -webkit-tap-highlight-color: transparent;
-  }
+  .opt { background: var(--card); border: 1.5px solid var(--border); border-radius: 14px; padding: 14px 16px; cursor: pointer; display: flex; align-items: center; gap: 13px; transition: border-color .15s, background .15s; -webkit-tap-highlight-color: transparent; }
   .opt:active { transform: scale(.98); }
   .opt.sel { border-color: var(--pink); background: var(--pink-dark); }
-  .opt-icon {
-    width: 32px; height: 32px;
-    border-radius: 50%;
-    background: var(--card2);
-    border: 1.5px solid var(--border);
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-    transition: all .15s;
-  }
+  .opt-icon { width: 32px; height: 32px; border-radius: 50%; background: var(--card2); border: 1.5px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all .15s; }
   .opt-icon svg { width: 14px; height: 14px; fill: var(--dgray); transition: fill .15s; }
   .opt.sel .opt-icon { background: var(--pink); border-color: var(--pink); }
   .opt.sel .opt-icon svg { fill: var(--white); }
   .opt-txt { font-size: 14px; color: var(--gray); font-weight: 600; transition: color .15s; }
   .opt.sel .opt-txt { color: var(--white); }
-  .btn {
-    width: 100%;
-    padding: 16px;
-    background: var(--pink);
-    color: var(--white);
-    border: none;
-    border-radius: 14px;
-    font-size: 15px;
-    font-weight: 700;
-    font-family: 'Poppins', sans-serif;
-    cursor: pointer;
-    opacity: .2;
-    pointer-events: none;
-    transition: opacity .2s, transform .1s;
-    display: flex; align-items: center; justify-content: center; gap: 8px;
-  }
+  .btn { width: 100%; padding: 16px; background: var(--pink); color: var(--white); border: none; border-radius: 14px; font-size: 15px; font-weight: 700; font-family: 'Poppins', sans-serif; cursor: pointer; opacity: .2; pointer-events: none; transition: opacity .2s, transform .1s; display: flex; align-items: center; justify-content: center; gap: 8px; }
   .btn svg { width: 16px; height: 16px; fill: white; }
   .btn.on { opacity: 1; pointer-events: all; }
   .btn.on:active { transform: scale(.98); background: var(--pink-mid); }
-  .loading-wrap { padding: 60px 24px; text-align: center; }
-  .spinner-ring {
-    width: 48px; height: 48px;
-    border: 3px solid var(--xgray);
-    border-top-color: var(--pink);
-    border-radius: 50%;
-    animation: spin .7s linear infinite;
-    margin: 0 auto 20px;
-  }
+
+  /* LOADING */
+  .loading-wrap { padding: 50px 24px; text-align: center; }
+  .spinner-ring { width: 48px; height: 48px; border: 3px solid var(--xgray); border-top-color: var(--pink); border-radius: 50%; animation: spin .7s linear infinite; margin: 0 auto 20px; }
   @keyframes spin { to { transform: rotate(360deg); } }
   .load-title { font-size: 15px; color: var(--white); font-weight: 700; margin-bottom: 4px; }
   .load-sub { font-size: 12px; color: #444; }
-  .ai-badge {
-    display: inline-flex; align-items: center; gap: 6px;
-    font-size: 10px; color: var(--pink); letter-spacing: 1px; font-weight: 700;
-    margin-bottom: 10px;
-    background: var(--pink-dark);
-    border: 1px solid rgba(255,45,155,.25);
-    border-radius: 20px; padding: 4px 10px;
-  }
+
+  /* RESULT */
+  .ai-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 10px; color: var(--pink); letter-spacing: 1px; font-weight: 700; margin-bottom: 10px; background: var(--pink-dark); border: 1px solid rgba(255,45,155,.25); border-radius: 20px; padding: 4px 10px; }
   .ai-dot { width: 6px; height: 6px; background: var(--pink); border-radius: 50%; animation: pulse 1.5s ease infinite; }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
-  .kit-name { font-size: 22px; font-weight: 800; color: var(--white); margin-bottom: 6px; letter-spacing: -.3px; line-height: 1.2; }
-  .kit-desc { font-size: 12px; color: var(--gray); line-height: 1.6; margin-bottom: 18px; }
-  .prod-card {
+
+  /* CHAT BUBBLE - texto conversacional da IA */
+  .ai-bubble {
     background: var(--card);
     border: 1.5px solid var(--border);
     border-radius: 14px;
-    padding: 14px; margin-bottom: 10px;
-    display: flex; gap: 12px; align-items: flex-start;
-    animation: fadeUp .3s ease both;
+    border-top-left-radius: 4px;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+    position: relative;
   }
+  .ai-bubble::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 3px;
+    height: 100%;
+    background: var(--pink);
+    border-radius: 3px 0 0 3px;
+  }
+  .ai-bubble-name { font-size: 10px; color: var(--pink); font-weight: 700; letter-spacing: .5px; margin-bottom: 8px; }
+  .ai-bubble-text { font-size: 13px; color: #bbb; line-height: 1.65; font-weight: 400; }
+  .ai-typing { display: inline-flex; gap: 4px; align-items: center; padding: 4px 0; }
+  .ai-typing span { width: 6px; height: 6px; background: var(--pink); border-radius: 50%; animation: typing 1s infinite; }
+  .ai-typing span:nth-child(2) { animation-delay: .2s; }
+  .ai-typing span:nth-child(3) { animation-delay: .4s; }
+  @keyframes typing { 0%,60%,100%{opacity:.2;transform:scale(.8)} 30%{opacity:1;transform:scale(1)} }
+
+  .kit-name { font-size: 20px; font-weight: 800; color: var(--white); margin-bottom: 4px; letter-spacing: -.3px; line-height: 1.2; }
+  .kit-divider { width: 28px; height: 2px; background: var(--pink); border-radius: 2px; margin: 10px 0 14px; }
+
+  .prod-card { background: var(--card); border: 1.5px solid var(--border); border-radius: 14px; padding: 14px; margin-bottom: 10px; display: flex; gap: 12px; align-items: flex-start; animation: fadeUp .3s ease both; }
   .prod-card:nth-child(1){animation-delay:.05s}
   .prod-card:nth-child(2){animation-delay:.12s}
   .prod-card:nth-child(3){animation-delay:.19s}
-  .prod-num {
-    width: 28px; height: 28px; border-radius: 50%;
-    background: var(--pink);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 12px; color: var(--white); font-weight: 800;
-    flex-shrink: 0; margin-top: 1px;
-  }
+  .prod-num { width: 28px; height: 28px; border-radius: 50%; background: var(--pink); display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--white); font-weight: 800; flex-shrink: 0; margin-top: 1px; }
   .prod-info { flex: 1; min-width: 0; }
   .prod-name { font-size: 13px; font-weight: 700; color: var(--white); margin-bottom: 3px; line-height: 1.35; }
-  .prod-why { font-size: 11px; color: var(--gray); line-height: 1.4; margin-bottom: 5px; }
+  .prod-why { font-size: 11px; color: var(--gray); line-height: 1.5; margin-bottom: 5px; }
   .prod-brand { font-size: 10px; color: var(--pink); font-weight: 700; letter-spacing: .5px; }
   .prod-price { font-size: 13px; font-weight: 800; color: var(--white); flex-shrink: 0; }
-  .total-row {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 14px 0; border-top: 1px solid var(--xgray);
-    margin-top: 4px; margin-bottom: 16px;
-  }
+
+  .total-row { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-top: 1px solid var(--xgray); margin-top: 4px; margin-bottom: 16px; }
   .total-label { font-size: 12px; color: var(--dgray); font-weight: 500; }
   .total-val { font-size: 24px; font-weight: 800; color: var(--white); letter-spacing: -.5px; }
-  .cta-btn {
-    width: 100%; padding: 17px;
-    background: var(--pink); color: var(--white);
-    border: none; border-radius: 14px;
-    font-size: 15px; font-weight: 700;
-    font-family: 'Poppins', sans-serif;
-    cursor: pointer; margin-bottom: 10px;
-    transition: background .2s, transform .1s;
-    display: flex; align-items: center; justify-content: center; gap: 8px;
-  }
+
+  .cta-btn { width: 100%; padding: 17px; background: var(--pink); color: var(--white); border: none; border-radius: 14px; font-size: 15px; font-weight: 700; font-family: 'Poppins', sans-serif; cursor: pointer; margin-bottom: 10px; transition: background .2s, transform .1s; display: flex; align-items: center; justify-content: center; gap: 8px; }
   .cta-btn svg { width: 16px; height: 16px; fill: white; }
   .cta-btn:active { background: var(--pink-mid); transform: scale(.98); }
-  .restart-btn {
-    width: 100%; padding: 14px;
-    background: transparent; color: var(--dgray);
-    border: 1.5px solid var(--border);
-    border-radius: 14px; font-size: 13px;
-    font-family: 'Poppins', sans-serif; font-weight: 600; cursor: pointer;
-    transition: all .15s;
-  }
-  .restart-btn:hover { color: var(--gray); border-color: #333; }
-  .partner-row {
-    display: flex; gap: 8px; margin-top: 16px;
-    padding-top: 16px; border-top: 1px solid var(--xgray);
-    align-items: center; flex-wrap: wrap;
-  }
+  .restart-btn { width: 100%; padding: 14px; background: transparent; color: var(--dgray); border: 1.5px solid var(--border); border-radius: 14px; font-size: 13px; font-family: 'Poppins', sans-serif; font-weight: 600; cursor: pointer; }
+  .partner-row { display: flex; gap: 8px; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--xgray); align-items: center; flex-wrap: wrap; }
   .partner-label { font-size: 10px; color: #333; font-weight: 500; }
   .partner-tag { font-size: 10px; color: #444; border: 1px solid var(--xgray); border-radius: 20px; padding: 3px 10px; font-weight: 500; }
   .home-indicator { height: 34px; display: flex; align-items: center; justify-content: center; }
   .home-bar { width: 130px; height: 5px; background: #222; border-radius: 3px; }
+
+  .error-box { background: #1a0a0a; border: 1px solid #3a1a1a; border-radius: 12px; padding: 12px 14px; margin-bottom: 14px; font-size: 12px; color: #aa5555; line-height: 1.5; }
+
   @media (max-width: 430px) {
     body { padding: 0; background: var(--bg); }
     .phone { width: 100%; min-height: 100vh; border-radius: 0; box-shadow: none; }
@@ -246,22 +179,10 @@
       <div class="q-title">Qual é o seu <span>objetivo</span> principal?</div>
       <div class="q-sub">Isso define o seu kit base</div>
       <div class="opts" data-step="1">
-        <div class="opt" data-val="massa">
-          <div class="opt-icon"><svg viewBox="0 0 24 24"><path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z"/></svg></div>
-          <div class="opt-txt">Ganhar massa muscular</div>
-        </div>
-        <div class="opt" data-val="definir">
-          <div class="opt-icon"><svg viewBox="0 0 24 24"><path d="M13.49 5.48c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm-3.6 13.9l1-4.4 2.1 2v6h2v-7.5l-2.1-2 .6-3c1.3 1.5 3.3 2.5 5.5 2.5v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1l-5.2 2.2v4.7h2v-3.4l1.8-.7-1.6 8.1-4.9-1-.4 2 7 1.4z"/></svg></div>
-          <div class="opt-txt">Emagrecer e definir</div>
-        </div>
-        <div class="opt" data-val="performance">
-          <div class="opt-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></div>
-          <div class="opt-txt">Melhorar performance</div>
-        </div>
-        <div class="opt" data-val="saude">
-          <div class="opt-icon"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div>
-          <div class="opt-txt">Saúde e energia diária</div>
-        </div>
+        <div class="opt" data-val="massa"><div class="opt-icon"><svg viewBox="0 0 24 24"><path d="M20.57 14.86L22 13.43 20.57 12 17 15.57 8.43 7 12 3.43 10.57 2 9.14 3.43 7.71 2 5.57 4.14 4.14 2.71 2.71 4.14l1.43 1.43L2 7.71l1.43 1.43L2 10.57 3.43 12 7 8.43 15.57 17 12 20.57 13.43 22l1.43-1.43L16.29 22l2.14-2.14 1.43 1.43 1.43-1.43-1.43-1.43L22 16.29z"/></svg></div><div class="opt-txt">Ganhar massa muscular</div></div>
+        <div class="opt" data-val="definir"><div class="opt-icon"><svg viewBox="0 0 24 24"><path d="M13.49 5.48c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm-3.6 13.9l1-4.4 2.1 2v6h2v-7.5l-2.1-2 .6-3c1.3 1.5 3.3 2.5 5.5 2.5v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1l-5.2 2.2v4.7h2v-3.4l1.8-.7-1.6 8.1-4.9-1-.4 2 7 1.4z"/></svg></div><div class="opt-txt">Emagrecer e definir</div></div>
+        <div class="opt" data-val="performance"><div class="opt-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></div><div class="opt-txt">Melhorar performance</div></div>
+        <div class="opt" data-val="saude"><div class="opt-icon"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div><div class="opt-txt">Saúde e energia diária</div></div>
       </div>
       <button class="btn" id="b1"><svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>Continuar</button>
     </div>
@@ -312,8 +233,16 @@
 
     <div class="step" id="s-result">
       <div class="ai-badge"><div class="ai-dot"></div>KIT GERADO PELA IA</div>
+
+      <div class="ai-bubble">
+        <div class="ai-bubble-name">DESSAFIT IA</div>
+        <div class="ai-bubble-text" id="ai-text">
+          <div class="ai-typing"><span></span><span></span><span></span></div>
+        </div>
+      </div>
+
       <div class="kit-name" id="kit-name"></div>
-      <div class="kit-desc" id="kit-desc"></div>
+      <div class="kit-divider"></div>
       <div id="prods"></div>
       <div class="total-row">
         <div class="total-label">Total do kit</div>
@@ -336,32 +265,186 @@
 </div>
 
 <script>
+const GEMINI_KEY = "AIzaSyDhsN4NXgxnR-RQKjtFRNLipCfCQkFH3_s";
+
 const ans = {};
+
 const kits = {
-  massa:{name:'Kit Força & Massa',desc:'A IA priorizou síntese proteica, força e recuperação muscular com base no seu perfil de treino.',prods:[{n:'Elite Pro Whey Concentrado 80% 1kg',why:'40g de proteína por dose — base sólida pra hipertrofia',brand:'Soldiers Nutrition',p:'R$ 89'},{n:'Creatina Monohidratada 300g',why:'Aumenta força e volume muscular — 100% pura importada',brand:'Soldiers Nutrition',p:'R$ 30'},{n:'Pré-Treino Evolution 300g',why:'Energia e foco sem crash — livre de glúten e lactose',brand:'Soldiers Nutrition',p:'R$ 40'}],total:'R$ 159'},
-  definir:{name:'Kit Definição',desc:'A IA montou uma combinação pra queimar gordura sem perder o músculo conquistado no Desafio.',prods:[{n:'Whey Protein Isolado 1kg',why:'Alta proteína, menos calorias — ideal pra definição',brand:'Oficial Farma',p:'R$ 240'},{n:'Ômega 3 60 Caps 2800mg',why:'Anti-inflamatório e suporte à queima de gordura',brand:'Soldiers Nutrition',p:'R$ 40'},{n:'Vitamina D3 + K2 manipulado',why:'Equilíbrio hormonal e imunidade durante o déficit',brand:'Oficial Farma',p:'R$ 55'}],total:'R$ 335'},
-  performance:{name:'Kit Performance',desc:'A IA priorizou energia sustentada, resistência e recuperação rápida pro seu ritmo de treino.',prods:[{n:'Pré-Treino Evolution 300g',why:'Energia, foco e resistência — 652 avaliações 5 estrelas',brand:'Soldiers Nutrition',p:'R$ 40'},{n:'Creatina Monohidratada 300g',why:'Reposição de energia celular durante esforço intenso',brand:'Soldiers Nutrition',p:'R$ 30'},{n:'Multivitamínico feminino manipulado',why:'Vitaminas e minerais essenciais pra performance',brand:'Oficial Farma',p:'R$ 65'}],total:'R$ 135'},
-  saude:{name:'Kit Bem-estar',desc:'A IA selecionou uma base de micronutrientes essenciais pra energia, imunidade e saúde geral.',prods:[{n:'Ômega 3 60 Caps 2800mg',why:'Coração, cérebro e anti-inflamatório natural',brand:'Soldiers Nutrition',p:'R$ 40'},{n:'Multivitamínico feminino manipulado',why:'Cobre deficiências nutricionais do dia a dia corrido',brand:'Oficial Farma',p:'R$ 65'},{n:'Vitamina D3 + K2 manipulado',why:'Imunidade, ossos e equilíbrio hormonal',brand:'Oficial Farma',p:'R$ 55'}],total:'R$ 160'}
+  massa: {
+    name: 'Kit Força & Massa',
+    prods: [
+      { n: 'Elite Pro Whey Concentrado 80% 1kg', why: '40g de proteína por dose — base sólida pra hipertrofia', brand: 'Soldiers Nutrition', p: 'R$ 89' },
+      { n: 'Creatina Monohidratada 300g', why: 'Aumenta força e volume muscular — 100% pura importada', brand: 'Soldiers Nutrition', p: 'R$ 30' },
+      { n: 'Pré-Treino Evolution 300g', why: 'Energia e foco sem crash — livre de glúten e lactose', brand: 'Soldiers Nutrition', p: 'R$ 40' },
+    ],
+    total: 'R$ 159'
+  },
+  definir: {
+    name: 'Kit Definição',
+    prods: [
+      { n: 'Whey Protein Isolado 1kg', why: 'Alta proteína, menos calorias — ideal pra definição', brand: 'Oficial Farma', p: 'R$ 240' },
+      { n: 'Ômega 3 60 Caps 2800mg', why: 'Anti-inflamatório e suporte à queima de gordura', brand: 'Soldiers Nutrition', p: 'R$ 40' },
+      { n: 'Vitamina D3 + K2 manipulado', why: 'Equilíbrio hormonal e imunidade durante o déficit', brand: 'Oficial Farma', p: 'R$ 55' },
+    ],
+    total: 'R$ 335'
+  },
+  performance: {
+    name: 'Kit Performance',
+    prods: [
+      { n: 'Pré-Treino Evolution 300g', why: 'Energia, foco e resistência — 652 avaliações 5 estrelas', brand: 'Soldiers Nutrition', p: 'R$ 40' },
+      { n: 'Creatina Monohidratada 300g', why: 'Reposição de energia celular durante esforço intenso', brand: 'Soldiers Nutrition', p: 'R$ 30' },
+      { n: 'Multivitamínico feminino manipulado', why: 'Vitaminas e minerais essenciais pra performance', brand: 'Oficial Farma', p: 'R$ 65' },
+    ],
+    total: 'R$ 135'
+  },
+  saude: {
+    name: 'Kit Bem-estar',
+    prods: [
+      { n: 'Ômega 3 60 Caps 2800mg', why: 'Coração, cérebro e anti-inflamatório natural', brand: 'Soldiers Nutrition', p: 'R$ 40' },
+      { n: 'Multivitamínico feminino manipulado', why: 'Cobre deficiências nutricionais do dia a dia corrido', brand: 'Oficial Farma', p: 'R$ 65' },
+      { n: 'Vitamina D3 + K2 manipulado', why: 'Imunidade, ossos e equilíbrio hormonal', brand: 'Oficial Farma', p: 'R$ 55' },
+    ],
+    total: 'R$ 160'
+  }
 };
-const progressLabels=['OBJETIVO','FREQUÊNCIA','RESTRIÇÃO','SAÚDE','CONCLUÍDO'];
-function show(id){document.querySelectorAll('.step').forEach(s=>s.classList.remove('on'));setTimeout(()=>document.getElementById(id).classList.add('on'),10);}
-function setProgress(step){const pct=step>=5?100:(step-1)*25;document.getElementById('prog').style.width=pct+'%';document.getElementById('prog-label').textContent=progressLabels[step-1]||'CONCLUÍDO';document.getElementById('prog-steps').textContent=step<5?`${step} de 4`:'✓';}
-document.querySelectorAll('.opts').forEach(g=>{g.querySelectorAll('.opt').forEach(o=>{o.addEventListener('click',()=>{g.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));o.classList.add('sel');ans[g.dataset.step]=o.dataset.val;const btn=document.getElementById('b'+g.dataset.step);if(btn)btn.classList.add('on');});});});
-document.getElementById('b1').addEventListener('click',()=>{show('s2');setProgress(2);});
-document.getElementById('b2').addEventListener('click',()=>{show('s3');setProgress(3);});
-document.getElementById('b3').addEventListener('click',()=>{show('s4');setProgress(4);});
-document.getElementById('b4').addEventListener('click',()=>{
-  show('s-load');setProgress(5);
-  const msgs=['Analisando seu perfil...','Cruzando objetivos e restrições...','Montando o kit ideal...'];
-  let i=0;
-  const iv=setInterval(()=>{
-    if(i<msgs.length){document.getElementById('load-msg').textContent=msgs[i++];}
-    else{clearInterval(iv);const kit=kits[ans['1']]||kits.saude;document.getElementById('kit-name').textContent=kit.name;document.getElementById('kit-desc').textContent=kit.desc;document.getElementById('kit-total').textContent=kit.total;document.getElementById('prods').innerHTML=kit.prods.map((p,i)=>`<div class="prod-card"><div class="prod-num">${i+1}</div><div class="prod-info"><div class="prod-name">${p.n}</div><div class="prod-why">${p.why}</div><div class="prod-brand">${p.brand.toUpperCase()}</div></div><div class="prod-price">${p.p}</div></div>`).join('');show('s-result');}
-  },900);
+
+const labels = {
+  objetivo: { massa:'ganhar massa muscular', definir:'emagrecer e definir', performance:'melhorar a performance', saude:'cuidar da saúde e energia' },
+  freq: { ini:'está começando agora', casual:'treina 1 a 2x por semana', regular:'treina 3 a 4x por semana', heavy:'treina 5x ou mais por semana' },
+  rest: { none:'sem restrições alimentares', lactose:'com intolerância à lactose', vegano:'vegana ou vegetariana', gluten:'sem glúten' },
+  como: { none:'sem comorbidades', hiper:'com hipertensão', diabetes:'com diabetes', renal:'com problema renal' }
+};
+
+const progressLabels = ['OBJETIVO','FREQUÊNCIA','RESTRIÇÃO','SAÚDE','CONCLUÍDO'];
+
+function show(id) {
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('on'));
+  setTimeout(() => document.getElementById(id).classList.add('on'), 10);
+}
+
+function setProgress(step) {
+  const pct = step >= 5 ? 100 : (step-1)*25;
+  document.getElementById('prog').style.width = pct+'%';
+  document.getElementById('prog-label').textContent = progressLabels[step-1] || 'CONCLUÍDO';
+  document.getElementById('prog-steps').textContent = step < 5 ? `${step} de 4` : '✓';
+}
+
+document.querySelectorAll('.opts').forEach(g => {
+  g.querySelectorAll('.opt').forEach(o => {
+    o.addEventListener('click', () => {
+      g.querySelectorAll('.opt').forEach(x => x.classList.remove('sel'));
+      o.classList.add('sel');
+      ans[g.dataset.step] = o.dataset.val;
+      const btn = document.getElementById('b'+g.dataset.step);
+      if (btn) btn.classList.add('on');
+    });
+  });
 });
-document.getElementById('restart').addEventListener('click',()=>{Object.keys(ans).forEach(k=>delete ans[k]);document.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));document.querySelectorAll('.btn').forEach(b=>b.classList.remove('on'));show('s1');setProgress(1);});
-function updateClock(){const now=new Date();document.getElementById('clock').textContent=`${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}`;}
-updateClock();setInterval(updateClock,30000);setProgress(1);
+
+document.getElementById('b1').addEventListener('click', () => { show('s2'); setProgress(2); });
+document.getElementById('b2').addEventListener('click', () => { show('s3'); setProgress(3); });
+document.getElementById('b3').addEventListener('click', () => { show('s4'); setProgress(4); });
+
+document.getElementById('b4').addEventListener('click', async () => {
+  show('s-load'); setProgress(5);
+
+  const msgs = ['Analisando seu perfil...', 'Cruzando objetivos e restrições...', 'Consultando a IA...'];
+  let mi = 0;
+  const msgIv = setInterval(() => {
+    if (mi < msgs.length) document.getElementById('load-msg').textContent = msgs[mi++];
+  }, 900);
+
+  const kit = kits[ans['1']] || kits.saude;
+  const obj = labels.objetivo[ans['1']] || 'cuidar da saúde';
+  const freq = labels.freq[ans['2']] || 'treina regularmente';
+  const rest = labels.rest[ans['3']] || 'sem restrições';
+  const como = labels.como[ans['4']] || 'sem comorbidades';
+  const produtos = kit.prods.map(p => p.n).join(', ');
+
+  const prompt = `Você é a IA de suplementação do DessaFit, uma plataforma de treinos para mulheres. 
+Fale diretamente com a aluna em português brasileiro, de forma calorosa, simples e encorajadora — como uma amiga que entende de suplementos.
+
+Perfil da aluna:
+- Objetivo: ${obj}
+- Frequência de treino: ${freq}
+- Restrição alimentar: ${rest}
+- Comorbidade: ${como}
+- Kit recomendado: ${produtos}
+
+Escreva UM parágrafo curto (3 a 4 frases no máximo) explicando:
+1. Por que esse kit faz sentido pro perfil específico dela
+2. O que ela vai sentir/perceber com o uso
+
+Seja direta, use linguagem simples, sem jargões técnicos. Não liste os produtos — só explique o raciocínio. Não use asteriscos nem formatação markdown.`;
+
+  let aiText = '';
+
+  try {
+    const resp = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_KEY}`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: prompt }] }],
+          generationConfig: { maxOutputTokens: 200, temperature: 0.8 }
+        })
+      }
+    );
+    const data = await resp.json();
+    aiText = data?.candidates?.[0]?.content?.parts?.[0]?.text || '';
+  } catch(e) {
+    aiText = '';
+  }
+
+  clearInterval(msgIv);
+
+  document.getElementById('kit-name').textContent = kit.name;
+  document.getElementById('kit-total').textContent = kit.total;
+  document.getElementById('prods').innerHTML = kit.prods.map((p, i) =>
+    `<div class="prod-card">
+      <div class="prod-num">${i+1}</div>
+      <div class="prod-info">
+        <div class="prod-name">${p.n}</div>
+        <div class="prod-why">${p.why}</div>
+        <div class="prod-brand">${p.brand.toUpperCase()}</div>
+      </div>
+      <div class="prod-price">${p.p}</div>
+    </div>`
+  ).join('');
+
+  const aiEl = document.getElementById('ai-text');
+  if (aiText) {
+    aiEl.textContent = '';
+    show('s-result');
+    // Efeito de digitação
+    let i = 0;
+    const typeIv = setInterval(() => {
+      if (i < aiText.length) {
+        aiEl.textContent += aiText[i++];
+      } else {
+        clearInterval(typeIv);
+      }
+    }, 18);
+  } else {
+    aiEl.textContent = 'Com base no seu perfil, montamos o kit ideal pra te ajudar a alcançar seus objetivos com segurança e eficiência.';
+    show('s-result');
+  }
+});
+
+document.getElementById('restart').addEventListener('click', () => {
+  Object.keys(ans).forEach(k => delete ans[k]);
+  document.querySelectorAll('.opt').forEach(o => o.classList.remove('sel'));
+  document.querySelectorAll('.btn').forEach(b => b.classList.remove('on'));
+  document.getElementById('ai-text').innerHTML = '<div class="ai-typing"><span></span><span></span><span></span></div>';
+  show('s1'); setProgress(1);
+});
+
+function updateClock() {
+  const now = new Date();
+  document.getElementById('clock').textContent = `${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}`;
+}
+updateClock(); setInterval(updateClock, 30000); setProgress(1);
 </script>
 </body>
 </html>
