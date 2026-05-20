@@ -93,7 +93,17 @@
   .partner-row { display: flex; gap: 8px; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--xgray); align-items: center; flex-wrap: wrap; }
   .partner-label { font-size: 10px; color: #333; font-weight: 500; }
   .partner-tag { font-size: 10px; color: #444; border: 1px solid var(--xgray); border-radius: 20px; padding: 3px 10px; font-weight: 500; }
-  .home-indicator { height: 34px; display: flex; align-items: center; justify-content: center; }
+  .coupon-wrap { margin-bottom: 16px; }
+  .coupon-label { font-size: 10px; color: var(--pink); font-weight: 700; letter-spacing: 1px; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+  .coupon-label svg { width: 12px; height: 12px; fill: var(--pink); }
+  .coupon-box { background: var(--pink-dark); border: 1.5px dashed var(--pink); border-radius: 12px; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .coupon-code { font-size: 18px; font-weight: 800; color: var(--white); letter-spacing: 2px; }
+  .coupon-copy { background: var(--pink); border: none; border-radius: 8px; padding: 8px 14px; color: var(--white); font-size: 12px; font-weight: 700; font-family: 'Poppins', sans-serif; cursor: pointer; display: flex; align-items: center; gap: 5px; white-space: nowrap; transition: background .15s, transform .1s; flex-shrink: 0; }
+  .coupon-copy svg { width: 12px; height: 12px; fill: white; }
+  .coupon-copy:active { transform: scale(.95); background: var(--pink-mid); }
+  .coupon-copy.copied { background: #1a7a4a; }
+  .coupon-sub { font-size: 11px; color: var(--gray); margin-top: 7px; }
+    .home-indicator { height: 34px; display: flex; align-items: center; justify-content: center; }
   .home-bar { width: 130px; height: 5px; background: #222; border-radius: 3px; }
   @media (max-width: 430px) {
     body { padding: 0; background: var(--bg); }
@@ -192,9 +202,23 @@
         <div class="total-label">Total do kit</div>
         <div class="total-val" id="kit-total"></div>
       </div>
+      <div class="coupon-wrap">
+        <div class="coupon-label">
+          <svg viewBox="0 0 24 24"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 7C4.67 7 4 6.33 4 5.5S4.67 4 5.5 4 7 4.67 7 5.5 6.33 7 5.5 7z"/></svg>
+          SEU CUPOM DE DESCONTO
+        </div>
+        <div class="coupon-box">
+          <div class="coupon-code" id="coupon-code">LIPEDESSA</div>
+          <button class="coupon-copy" id="coupon-copy-btn" onclick="copyCoupon()">
+            <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+            Copiar
+          </button>
+        </div>
+        <div class="coupon-sub">Cole o cupom ao finalizar sua compra nos parceiros</div>
+      </div>
       <button class="cta-btn" onclick="window.location.href='https://www.soldiersnutrition.com.br'">
         <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96C5 16.1 6.1 17 7 17h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63H19c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0023.46 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
-        Quero este kit
+        Comprar com desconto
       </button>
       <button class="restart-btn" id="restart">Refazer o quiz</button>
       <div class="partner-row">
@@ -414,6 +438,33 @@ document.getElementById('restart').addEventListener('click', () => {
   document.getElementById('ai-text').textContent = '';
   show('s1'); setProgress(1);
 });
+
+function copyCoupon() {
+  const code = document.getElementById('coupon-code').textContent;
+  const btn = document.getElementById('coupon-copy-btn');
+  navigator.clipboard.writeText(code).then(() => {
+    btn.classList.add('copied');
+    btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Copiado!';
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg> Copiar';
+    }, 2500);
+  }).catch(() => {
+    // fallback pra browsers antigos
+    const el = document.createElement('textarea');
+    el.value = code;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+    btn.classList.add('copied');
+    btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Copiado!';
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg> Copiar';
+    }, 2500);
+  });
+}
 
 function updateClock() {
   const now = new Date();
