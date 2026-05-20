@@ -21,23 +21,9 @@
     --dgray: #444444;
     --xgray: #1e1e1e;
   }
-  html, body {
-    min-height: 100%;
-    background: #060606;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Poppins', sans-serif;
-  }
+  html, body { min-height: 100%; background: #060606; display: flex; align-items: center; justify-content: center; font-family: 'Poppins', sans-serif; }
   body { padding: 20px 0; }
-  .phone {
-    width: 390px;
-    min-height: 700px;
-    background: var(--bg);
-    border-radius: 44px;
-    overflow: hidden;
-    box-shadow: 0 40px 80px rgba(0,0,0,.7), 0 0 0 1px #1e1e1e;
-  }
+  .phone { width: 390px; min-height: 700px; background: var(--bg); border-radius: 44px; overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,.7), 0 0 0 1px #1e1e1e; }
   .status-bar { height: 44px; background: var(--bg); display: flex; align-items: center; justify-content: space-between; padding: 0 28px; }
   .status-time { font-size: 15px; font-weight: 700; color: var(--white); }
   .status-icons { display: flex; gap: 5px; align-items: center; }
@@ -73,50 +59,20 @@
   .btn svg { width: 16px; height: 16px; fill: white; }
   .btn.on { opacity: 1; pointer-events: all; }
   .btn.on:active { transform: scale(.98); background: var(--pink-mid); }
-
-  /* LOADING */
   .loading-wrap { padding: 50px 24px; text-align: center; }
   .spinner-ring { width: 48px; height: 48px; border: 3px solid var(--xgray); border-top-color: var(--pink); border-radius: 50%; animation: spin .7s linear infinite; margin: 0 auto 20px; }
   @keyframes spin { to { transform: rotate(360deg); } }
   .load-title { font-size: 15px; color: var(--white); font-weight: 700; margin-bottom: 4px; }
   .load-sub { font-size: 12px; color: #444; }
-
-  /* RESULT */
   .ai-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 10px; color: var(--pink); letter-spacing: 1px; font-weight: 700; margin-bottom: 10px; background: var(--pink-dark); border: 1px solid rgba(255,45,155,.25); border-radius: 20px; padding: 4px 10px; }
   .ai-dot { width: 6px; height: 6px; background: var(--pink); border-radius: 50%; animation: pulse 1.5s ease infinite; }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
-
-  /* CHAT BUBBLE - texto conversacional da IA */
-  .ai-bubble {
-    background: var(--card);
-    border: 1.5px solid var(--border);
-    border-radius: 14px;
-    border-top-left-radius: 4px;
-    padding: 14px 16px;
-    margin-bottom: 16px;
-    position: relative;
-  }
-  .ai-bubble::before {
-    content: '';
-    position: absolute;
-    top: -1px;
-    left: -1px;
-    width: 3px;
-    height: 100%;
-    background: var(--pink);
-    border-radius: 3px 0 0 3px;
-  }
+  .ai-bubble { background: var(--card); border: 1.5px solid var(--border); border-radius: 14px; border-top-left-radius: 4px; padding: 14px 16px; margin-bottom: 16px; position: relative; }
+  .ai-bubble::before { content: ''; position: absolute; top: 0; left: -1px; width: 3px; height: 100%; background: var(--pink); border-radius: 3px 0 0 3px; }
   .ai-bubble-name { font-size: 10px; color: var(--pink); font-weight: 700; letter-spacing: .5px; margin-bottom: 8px; }
-  .ai-bubble-text { font-size: 13px; color: #bbb; line-height: 1.65; font-weight: 400; }
-  .ai-typing { display: inline-flex; gap: 4px; align-items: center; padding: 4px 0; }
-  .ai-typing span { width: 6px; height: 6px; background: var(--pink); border-radius: 50%; animation: typing 1s infinite; }
-  .ai-typing span:nth-child(2) { animation-delay: .2s; }
-  .ai-typing span:nth-child(3) { animation-delay: .4s; }
-  @keyframes typing { 0%,60%,100%{opacity:.2;transform:scale(.8)} 30%{opacity:1;transform:scale(1)} }
-
+  .ai-bubble-text { font-size: 13px; color: #bbb; line-height: 1.7; font-weight: 400; }
   .kit-name { font-size: 20px; font-weight: 800; color: var(--white); margin-bottom: 4px; letter-spacing: -.3px; line-height: 1.2; }
   .kit-divider { width: 28px; height: 2px; background: var(--pink); border-radius: 2px; margin: 10px 0 14px; }
-
   .prod-card { background: var(--card); border: 1.5px solid var(--border); border-radius: 14px; padding: 14px; margin-bottom: 10px; display: flex; gap: 12px; align-items: flex-start; animation: fadeUp .3s ease both; }
   .prod-card:nth-child(1){animation-delay:.05s}
   .prod-card:nth-child(2){animation-delay:.12s}
@@ -127,11 +83,9 @@
   .prod-why { font-size: 11px; color: var(--gray); line-height: 1.5; margin-bottom: 5px; }
   .prod-brand { font-size: 10px; color: var(--pink); font-weight: 700; letter-spacing: .5px; }
   .prod-price { font-size: 13px; font-weight: 800; color: var(--white); flex-shrink: 0; }
-
   .total-row { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-top: 1px solid var(--xgray); margin-top: 4px; margin-bottom: 16px; }
   .total-label { font-size: 12px; color: var(--dgray); font-weight: 500; }
   .total-val { font-size: 24px; font-weight: 800; color: var(--white); letter-spacing: -.5px; }
-
   .cta-btn { width: 100%; padding: 17px; background: var(--pink); color: var(--white); border: none; border-radius: 14px; font-size: 15px; font-weight: 700; font-family: 'Poppins', sans-serif; cursor: pointer; margin-bottom: 10px; transition: background .2s, transform .1s; display: flex; align-items: center; justify-content: center; gap: 8px; }
   .cta-btn svg { width: 16px; height: 16px; fill: white; }
   .cta-btn:active { background: var(--pink-mid); transform: scale(.98); }
@@ -141,9 +95,6 @@
   .partner-tag { font-size: 10px; color: #444; border: 1px solid var(--xgray); border-radius: 20px; padding: 3px 10px; font-weight: 500; }
   .home-indicator { height: 34px; display: flex; align-items: center; justify-content: center; }
   .home-bar { width: 130px; height: 5px; background: #222; border-radius: 3px; }
-
-  .error-box { background: #1a0a0a; border: 1px solid #3a1a1a; border-radius: 12px; padding: 12px 14px; margin-bottom: 14px; font-size: 12px; color: #aa5555; line-height: 1.5; }
-
   @media (max-width: 430px) {
     body { padding: 0; background: var(--bg); }
     .phone { width: 100%; min-height: 100vh; border-radius: 0; box-shadow: none; }
@@ -159,12 +110,10 @@
       <svg viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg>
     </div>
   </div>
-
   <div class="header">
     <div class="logo">Dessa<span class="logo-fit">Fit</span></div>
     <div class="header-badge">Suplementos</div>
   </div>
-
   <div class="progress-wrap">
     <div class="prog-bar"><div class="prog-fill" id="prog" style="width:0%"></div></div>
     <div class="prog-meta">
@@ -172,7 +121,6 @@
       <div class="prog-steps" id="prog-steps">1 de 4</div>
     </div>
   </div>
-
   <div class="screen">
 
     <div class="step on" id="s1">
@@ -233,14 +181,10 @@
 
     <div class="step" id="s-result">
       <div class="ai-badge"><div class="ai-dot"></div>KIT GERADO PELA IA</div>
-
       <div class="ai-bubble">
         <div class="ai-bubble-name">DESSAFIT IA</div>
-        <div class="ai-bubble-text" id="ai-text">
-          <div class="ai-typing"><span></span><span></span><span></span></div>
-        </div>
+        <div class="ai-bubble-text" id="ai-text"></div>
       </div>
-
       <div class="kit-name" id="kit-name"></div>
       <div class="kit-divider"></div>
       <div id="prods"></div>
@@ -265,57 +209,130 @@
 </div>
 
 <script>
-const GEMINI_KEY = "AIzaSyCkt2yh4BgWZUo9tcs7vUuqIy1FyaGEu8M";
-
 const ans = {};
+
+// Textos conversacionais por combinação: objetivo_frequencia_restricao_comorbidade
+// Cada chave pode ter múltiplas variações — rotaciona aleatoriamente
+const textos = {
+
+  // MASSA
+  "massa_ini_none_none": ["Você está começando agora, e isso é ótimo! Nessa fase, o segredo é dar ao seu corpo os nutrientes certos pra construir músculo desde o início. A proteína vai ser sua melhor amiga — ela é o tijolo do músculo. Adicionei creatina porque ela ajuda a dar aquela forcinha extra nos treinos, mesmo pra quem está começando. E o pré-treino vai garantir que você chegue com energia pra cada sessão.", "Começar bem é metade do caminho! Seu corpo vai responder muito rápido à suplementação nessa fase inicial, então vale investir desde já. O whey garante a proteína que você precisa pra não perder o esforço dos treinos. A creatina vai ajudar no ganho de força sem complicação. E o pré-treino dá aquele gás quando a disposição não tá lá essas coisas."],
+
+  "massa_casual_none_none": ["Treinar 1 a 2x por semana é um ritmo bacana pra começar a ganhar massa — e com a suplementação certa você vai potencializar cada treino. O whey ajuda seu músculo a se recuperar e crescer mesmo nos dias que você não treina. A creatina funciona acumulando no seu corpo, então mesmo num ritmo mais tranquilo, ela vai fazer diferença ao longo do tempo.", "Com esse ritmo de treino, o segredo é aproveitar ao máximo cada sessão. A proteína do whey vai ser fundamental pra seu músculo ter material pra crescer. A creatina é ótima porque o efeito dela é progressivo — você vai notar a diferença em força e volume semana a semana."],
+
+  "massa_regular_none_none": ["3 a 4x por semana é o ritmo ideal pra ganho de massa — seu corpo tem tempo de estimular o músculo e também de recuperar. Com esse volume de treino, você precisa de proteína suficiente pra sustentar o crescimento, e a creatina vai te dar força extra pra aguentar as séries mais pesadas. O pré-treino garante foco e energia pra você não desperdiçar nenhum treino.", "Esse é o ritmo dos resultados! Com 3 a 4 treinos por semana, seu corpo está em modo de construção. O whey concentrado cobre a demanda de proteína sem pesar no bolso. A creatina aumenta sua força em cerca de 10-15% — você vai sentir na hora. E o pré-treino limpo não vai te deixar sem dormir depois."],
+
+  "massa_heavy_none_none": ["5x ou mais por semana é treino sério — e seu corpo precisa de suporte sério também. Com esse volume, a recuperação muscular é tudo. O whey de alta proteína garante que você não entre em catabolismo. A creatina é indispensável pra quem treina pesado — ela repõe a energia celular que você gasta nas séries intensas. E o pré-treino mantém sua performance lá em cima mesmo nos dias mais cansativos.", "Você treina como atleta, então precisa se suplementar como tal. O whey concentrado entrega 40g de proteína por dose — essencial pra suportar esse volume de treino. A creatina já deveria estar no seu dia a dia nessa frequência. O pré-treino vai garantir constância na performance, mesmo quando o corpo pedir cama."],
+
+  "massa_regular_lactose_none": ["Como você tem intolerância à lactose, escolhemos produtos que não vão te causar desconforto. O whey isolado tem muito menos lactose que o concentrado — a maioria das pessoas com intolerância tolera bem. A creatina é pura e não tem nada de laticínio. E o pré-treino também é livre de lactose. Você vai ganhar massa sem abrir mão do conforto digestivo.", "Ter intolerância à lactose não impede de ganhar massa — só exige um cuidado maior na escolha dos suplementos. O isolado é a forma mais pura do whey e tem índice de lactose muito baixo. Creatina e pré-treino são naturalmente livres de lactose, então você treina tranquila."],
+
+  "massa_regular_vegano_none": ["Ser vegana e querer ganhar massa é totalmente possível — e esse kit foi pensado exatamente pra isso. A proteína vegetal combina diferentes fontes pra garantir todos os aminoácidos essenciais que o seu músculo precisa. A creatina é uma das poucas que veganos costumam ter deficiência natural, então faz ainda mais diferença pra você. E o pré-treino clean vai dar o gás necessário.", "Vegana e forte — que combinação! A proteína vegetal de qualidade é o coração desse kit. Veganos naturalmente têm menos creatina no organismo porque ela vem principalmente da carne, então suplementar faz diferença real no ganho de força. O pré-treino completa o trio perfeito."],
+
+  // DEFINIR
+  "definir_ini_none_none": ["Começando a jornada de definição — ótima escolha! Nessa fase, o principal é manter a proteína alta pra não perder músculo enquanto você perde gordura. O whey isolado é perfeito pra isso: muito proteína, poucas calorias. O ômega 3 vai ajudar a controlar inflamação e ainda dá uma mãozinha na queima de gordura. E a vitamina D3 regula hormônios que afetam tanto o humor quanto o peso.", "Definição é sobre perder gordura sem perder músculo — e esse kit foi montado exatamente com esse foco. O whey isolado garante proteína de qualidade sem as calorias do concentrado. O ômega 3 é anti-inflamatório e ajuda a mobilizar gordura. A vitamina D3 é frequentemente ignorada, mas afeta diretamente metabolismo e disposição."],
+
+  "definir_regular_none_none": ["Você treina bem e quer ver o resultado aparecer — esse kit vai te ajudar a chegar lá! Com 3 a 4 treinos por semana, seu metabolismo já está acelerado. O whey isolado garante a proteína sem caloria extra — fundamental pra definição. O ômega 3 tem efeito anti-inflamatório que ajuda na recuperação muscular e na queima de gordura. E a vitamina D3 equilibra hormônios que impactam diretamente no peso.", "Treino consistente + suplementação certa = resultado na certa. Com esse volume de treino, você preserva músculo e perde gordura ao mesmo tempo. O isolado é mais caro que o concentrado, mas vale cada centavo na definição. O ômega 3 é subestimado — ele muda o perfil inflamatório do corpo, o que facilita muito a perda de gordura."],
+
+  "definir_regular_lactose_none": ["Intolerância à lactose não é obstáculo pra definição! O whey isolado é a escolha certa: além de ser excelente pra definição, tem índice de lactose muito menor que o concentrado. O ômega 3 e a vitamina D3 são naturalmente livres de lactose e completam o kit perfeitamente. Você vai conseguir o resultado sem desconforto digestivo.", "Escolhemos o isolado especialmente porque ele é melhor tolerado por quem tem sensibilidade à lactose. É o whey mais puro que existe. Junto com ômega 3 e vitamina D3, você tem tudo que precisa pra definir com saúde e sem interferência da restrição alimentar."],
+
+  "definir_regular_vegano_none": ["Definição sendo vegana tem seus segredos — e esse kit respeita tudo isso. A proteína vegetal de qualidade vai manter seu músculo enquanto você perde gordura. O ômega 3 de origem vegetal (algas) é tão eficaz quanto o de peixe. E a vitamina D3 é frequentemente deficiente em veganas, afetando humor, metabolismo e até a composição corporal.", "Vegana em processo de definição precisa de atenção redobrada à proteína. Esse kit garante que você não perca massa magra enquanto perde gordura. O ômega 3 vegano e a vitamina D3 completam os micronutrientes que mais faltam em dietas plant-based."],
+
+  "definir_heavy_none_none": ["Você treina pesado e quer a definição — esse kit aguenta o ritmo! Com esse volume de treino, você está queimando muito — e precisa garantir que está queimando gordura, não músculo. O whey isolado entrega proteína de qualidade sem caloria extra. O ômega 3 controla inflamação causada pelo treino intenso. E a vitamina D3 regula hormônios essenciais pra composição corporal.", "Quem treina 5x ou mais e ainda quer definição merece respeito — e suplementação na altura. O isolado é seu aliado número um: alta proteína, baixa caloria. O ômega 3 reduz a inflamação sistêmica do treino intenso, o que acelera a recuperação e a queima de gordura. Vitamina D3 fecha o ciclo hormonal."],
+
+  "definir_casual_none_none": ["Mesmo treinando com menos frequência, dá pra definir muito bem com a suplementação certa! O segredo é manter a proteína alta pra preservar o músculo e controlar as calorias. O whey isolado é perfeito pra isso. O ômega 3 vai trabalhar a seu favor mesmo nos dias que você não treina — ele age no metabolismo de forma contínua. A vitamina D3 equilibra hormônios que afetam peso e disposição.", "Com 1 a 2 treinos por semana, cada sessão conta muito — e o suporte nutricional faz toda a diferença. O isolado garante proteína de qualidade sem excesso calórico. Ômega 3 e vitamina D3 trabalham nos bastidores pra otimizar seu metabolismo e composição corporal."],
+
+  // PERFORMANCE
+  "performance_regular_none_none": ["Performance é sobre render mais em cada treino — e esse kit foi feito pra isso! O pré-treino vai te dar energia e foco desde o aquecimento até a última série. A creatina aumenta a disponibilidade de energia nas células musculares, o que se traduz em mais repetições, mais peso e mais resultado. O multivitamínico garante que nenhuma deficiência de micronutriente limite seu desempenho.", "Você quer dar o seu melhor em cada treino — e esse kit vai garantir isso. O pré-treino clean dá energia sem o crash de depois. A creatina é a suplementação mais estudada do mundo: aumenta força e resistência de forma comprovada. O multivitamínico feminino cobre as necessidades específicas do seu organismo."],
+
+  "performance_heavy_none_none": ["Quem treina 5x ou mais sabe que performance não é só no treino — é também na recuperação. Esse kit equilibra os dois lados. O pré-treino garante energia consistente mesmo na quinta ou sexta sessão da semana. A creatina repõe a energia celular gasta nas séries intensas. E o multivitamínico garante que seu organismo tem todos os micronutrientes pra sustentar esse ritmo sem travar.", "Nesse nível de treino, a suplementação não é luxo — é necessidade. O pré-treino mantém sua performance constante mesmo com o acúmulo de treinos. A creatina é obrigatória pra quem treina nessa frequência. O multivitamínico feminino cobre deficiências que surgem com o alto volume de treino."],
+
+  "performance_casual_none_none": ["Mesmo treinando 1 a 2x por semana, dá pra extrair o máximo de cada sessão! O pré-treino vai garantir que você chegue com energia e foco — sem desperdício de treino. A creatina funciona de forma acumulativa, então mesmo com menos frequência, ela vai aumentando sua força ao longo das semanas. O multivitamínico cobre deficiências que afetam energia e disposição no dia a dia.", "Qualidade acima de quantidade — e esse kit vai tornar cada treino seu mais produtivo. O pré-treino transforma até aqueles dias sem motivação em bons treinos. A creatina vai aumentando sua força gradualmente. O multivitamínico garante que seu corpo tem tudo que precisa pra funcionar bem."],
+
+  "performance_regular_lactose_none": ["Intolerância à lactose não impede de ter performance de alto nível! Escolhemos produtos 100% seguros pra você. O pré-treino Evolution é livre de lactose. A creatina é pura, sem nenhum derivado de leite. E o multivitamínico em cápsulas não tem lactose. Você vai treinar no seu melhor sem preocupação com desconforto digestivo.", "Todos os produtos desse kit são seguros pra quem tem intolerância à lactose. O pré-treino, a creatina e o multivitamínico foram escolhidos especificamente pensando nisso. Performance sem desconforto — exatamente o que você precisa."],
+
+  // SAÚDE
+  "saude_ini_none_none": ["Começar pelo básico é a escolha mais inteligente! Antes de pensar em suplementos de performance, é fundamental ter a base de micronutrientes coberta. O ômega 3 é anti-inflamatório natural e beneficia coração, cérebro e articulações. O multivitamínico feminino cobre as necessidades específicas do seu organismo. E a vitamina D3 com K2 é fundamental pra imunidade, ossos e equilíbrio hormonal — e a maioria das mulheres tem deficiência.", "A base vem primeiro — e esse kit é exatamente isso. Ômega 3, multivitamínico e vitamina D3 são os três pilares de uma saúde sólida. Você vai sentir a diferença em energia, disposição e imunidade nas primeiras semanas. É o investimento mais importante que você pode fazer no seu corpo agora."],
+
+  "saude_casual_none_none": ["Cuidar da saúde vai além dos treinos — é o que você coloca no corpo todo dia. Esse kit foi pensado pra complementar sua alimentação e garantir que seu organismo tem tudo que precisa. O ômega 3 trabalha contra inflamação crônica, que é raiz de muitos problemas de saúde. O multivitamínico cobre o que a alimentação moderna não consegue suprir. E a vitamina D3 com K2 é fundamental — especialmente pra mulheres.", "Saúde de verdade é construída no dia a dia, não só na academia. Esse trio de micronutrientes vai trabalhar por você enquanto você vive sua vida. O ômega 3 melhora humor, foco e reduz inflamação. O multivitamínico garante que nenhuma deficiência passa despercebida. A D3 com K2 é a combinação perfeita — a K2 garante que o cálcio vai pra onde deve ir."],
+
+  "saude_regular_none_none": ["Você já treina bem — agora é hora de cuidar dos micronutrientes que sustentam tudo isso! Mulheres que treinam têm necessidades aumentadas de vitaminas e minerais. O multivitamínico feminino foi formulado exatamente pra isso. O ômega 3 reduz inflamação causada pelo exercício e melhora a recuperação. E a vitamina D3 com K2 é fundamental pra saúde óssea, imunidade e equilíbrio hormonal.", "Treino sem micronutrientes adequados é como carro sem combustível. Esse kit garante que seu organismo tem tudo que precisa pra aproveitar ao máximo seus treinos. O multivitamínico cobre o que a alimentação não cobre. O ômega 3 melhora recuperação e foco. A D3 com K2 regula hormônios que afetam desde o humor até o metabolismo."],
+
+  "saude_ini_none_hiper": ["Com hipertensão, a escolha dos suplementos precisa ser ainda mais cuidadosa — e esse kit é seguro pra você! Evitamos estimulantes e pré-treinos que podem elevar a pressão. O ômega 3 tem propriedades que podem ajudar na saúde cardiovascular. O multivitamínico cobre suas necessidades sem ingredientes problemáticos. A vitamina D3 é importante pra saúde do coração também. Mas sempre converse com seu médico sobre qualquer suplementação.", "Hipertensão não impede de se cuidar — só exige mais atenção. Esse kit foi montado sem estimulantes ou ingredientes que elevam pressão. O ômega 3 é especialmente benéfico pra saúde cardiovascular. O multivitamínico e a D3 complementam sem risco. Lembre de mencionar essa suplementação pro seu médico na próxima consulta."],
+
+  "saude_ini_none_diabetes": ["Com diabetes, a escolha de suplementos precisa ser consciente — e esse kit é seguro pra você! Evitamos açúcares e carboidratos que afetam a glicemia. O ômega 3 tem efeito positivo na sensibilidade à insulina. O multivitamínico cobre deficiências comuns em pessoas com diabetes. A vitamina D3 também tem relação com o controle glicêmico. Sempre consulte seu médico antes de iniciar qualquer suplementação.", "Esse kit foi pensado pra ser seguro e benéfico pra quem tem diabetes. Sem açúcares adicionados, sem ingredientes que afetam glicemia. O ômega 3 melhora sensibilidade à insulina. A vitamina D3 tem estudos promissores no controle glicêmico. Sempre alinhe com seu médico."],
+
+  "saude_ini_none_renal": ["Com histórico renal, a suplementação precisa de cuidado especial — esse kit foi montado com isso em mente! Evitamos proteínas em excesso e outros ingredientes que sobrecarregam os rins. O ômega 3 tem propriedades anti-inflamatórias benéficas pra saúde renal. O multivitamínico está em dose segura. Mas é fundamental que você consulte seu nefrologista antes de iniciar qualquer suplementação.", "Problema renal exige cautela redobrada — e respeitamos isso. Esse kit é conservador e seguro, mas qualquer suplementação com histórico renal deve ser aprovada pelo seu médico. O ômega 3 é geralmente bem tolerado. A vitamina D3 em dose baixa também costuma ser segura. Mas consulte antes de começar."]
+};
+
+// Fallback genérico por objetivo
+const fallbacks = {
+  massa: "Com base no seu perfil, esse kit foi montado pra maximizar o ganho de massa muscular respeitando suas características individuais. A combinação de proteína, creatina e energia de qualidade vai te dar o suporte que o seu treino precisa pra gerar resultado de verdade.",
+  definir: "Esse kit foi pensado especificamente pra te ajudar a perder gordura sem perder músculo — o grande desafio da definição. A proteína de qualidade mantém sua massa magra enquanto você emagrece. Os micronutrientes trabalham a favor do seu metabolismo todos os dias.",
+  performance: "Performance é sobre consistência — e esse kit garante que você vai render bem em cada treino. Energia, força e micronutrientes essenciais trabalhando juntos pra você tirar o máximo de cada sessão na academia.",
+  saude: "Cuidar da saúde é o investimento mais importante. Esse kit cobre os três pilares mais fundamentais de uma saúde feminina sólida: ômega 3 pra inflamação, multivitamínico pra cobrir deficiências, e vitamina D3 com K2 pra imunidade e equilíbrio hormonal."
+};
 
 const kits = {
   massa: {
     name: 'Kit Força & Massa',
     prods: [
-      { n: 'Elite Pro Whey Concentrado 80% 1kg', why: '40g de proteína por dose — base sólida pra hipertrofia', brand: 'Soldiers Nutrition', p: 'R$ 89' },
-      { n: 'Creatina Monohidratada 300g', why: 'Aumenta força e volume muscular — 100% pura importada', brand: 'Soldiers Nutrition', p: 'R$ 30' },
-      { n: 'Pré-Treino Evolution 300g', why: 'Energia e foco sem crash — livre de glúten e lactose', brand: 'Soldiers Nutrition', p: 'R$ 40' },
+      { n:'Elite Pro Whey Concentrado 80% 1kg', why:'40g de proteína por dose — base sólida pra hipertrofia', brand:'Soldiers Nutrition', p:'R$ 89' },
+      { n:'Creatina Monohidratada 300g', why:'Aumenta força e volume muscular — 100% pura importada', brand:'Soldiers Nutrition', p:'R$ 30' },
+      { n:'Pré-Treino Evolution 300g', why:'Energia e foco sem crash — livre de glúten e lactose', brand:'Soldiers Nutrition', p:'R$ 40' },
     ],
     total: 'R$ 159'
   },
   definir: {
     name: 'Kit Definição',
     prods: [
-      { n: 'Whey Protein Isolado 1kg', why: 'Alta proteína, menos calorias — ideal pra definição', brand: 'Oficial Farma', p: 'R$ 240' },
-      { n: 'Ômega 3 60 Caps 2800mg', why: 'Anti-inflamatório e suporte à queima de gordura', brand: 'Soldiers Nutrition', p: 'R$ 40' },
-      { n: 'Vitamina D3 + K2 manipulado', why: 'Equilíbrio hormonal e imunidade durante o déficit', brand: 'Oficial Farma', p: 'R$ 55' },
+      { n:'Whey Protein Isolado 1kg', why:'Alta proteína, menos calorias — ideal pra definição', brand:'Oficial Farma', p:'R$ 240' },
+      { n:'Ômega 3 60 Caps 2800mg', why:'Anti-inflamatório e suporte à queima de gordura', brand:'Soldiers Nutrition', p:'R$ 40' },
+      { n:'Vitamina D3 + K2 manipulado', why:'Equilíbrio hormonal e imunidade durante o déficit', brand:'Oficial Farma', p:'R$ 55' },
     ],
     total: 'R$ 335'
   },
   performance: {
     name: 'Kit Performance',
     prods: [
-      { n: 'Pré-Treino Evolution 300g', why: 'Energia, foco e resistência — 652 avaliações 5 estrelas', brand: 'Soldiers Nutrition', p: 'R$ 40' },
-      { n: 'Creatina Monohidratada 300g', why: 'Reposição de energia celular durante esforço intenso', brand: 'Soldiers Nutrition', p: 'R$ 30' },
-      { n: 'Multivitamínico feminino manipulado', why: 'Vitaminas e minerais essenciais pra performance', brand: 'Oficial Farma', p: 'R$ 65' },
+      { n:'Pré-Treino Evolution 300g', why:'Energia, foco e resistência — 652 avaliações 5 estrelas', brand:'Soldiers Nutrition', p:'R$ 40' },
+      { n:'Creatina Monohidratada 300g', why:'Reposição de energia celular durante esforço intenso', brand:'Soldiers Nutrition', p:'R$ 30' },
+      { n:'Multivitamínico feminino manipulado', why:'Vitaminas e minerais essenciais pra performance', brand:'Oficial Farma', p:'R$ 65' },
     ],
     total: 'R$ 135'
   },
   saude: {
     name: 'Kit Bem-estar',
     prods: [
-      { n: 'Ômega 3 60 Caps 2800mg', why: 'Coração, cérebro e anti-inflamatório natural', brand: 'Soldiers Nutrition', p: 'R$ 40' },
-      { n: 'Multivitamínico feminino manipulado', why: 'Cobre deficiências nutricionais do dia a dia corrido', brand: 'Oficial Farma', p: 'R$ 65' },
-      { n: 'Vitamina D3 + K2 manipulado', why: 'Imunidade, ossos e equilíbrio hormonal', brand: 'Oficial Farma', p: 'R$ 55' },
+      { n:'Ômega 3 60 Caps 2800mg', why:'Coração, cérebro e anti-inflamatório natural', brand:'Soldiers Nutrition', p:'R$ 40' },
+      { n:'Multivitamínico feminino manipulado', why:'Cobre deficiências nutricionais do dia a dia corrido', brand:'Oficial Farma', p:'R$ 65' },
+      { n:'Vitamina D3 + K2 manipulado', why:'Imunidade, ossos e equilíbrio hormonal', brand:'Oficial Farma', p:'R$ 55' },
     ],
     total: 'R$ 160'
   }
 };
 
-const labels = {
-  objetivo: { massa:'ganhar massa muscular', definir:'emagrecer e definir', performance:'melhorar a performance', saude:'cuidar da saúde e energia' },
-  freq: { ini:'está começando agora', casual:'treina 1 a 2x por semana', regular:'treina 3 a 4x por semana', heavy:'treina 5x ou mais por semana' },
-  rest: { none:'sem restrições alimentares', lactose:'com intolerância à lactose', vegano:'vegana ou vegetariana', gluten:'sem glúten' },
-  como: { none:'sem comorbidades', hiper:'com hipertensão', diabetes:'com diabetes', renal:'com problema renal' }
-};
-
 const progressLabels = ['OBJETIVO','FREQUÊNCIA','RESTRIÇÃO','SAÚDE','CONCLUÍDO'];
+
+function getTexto(obj, freq, rest, como) {
+  const key = `${obj}_${freq}_${rest}_${como}`;
+  const opcoes = textos[key];
+  if (opcoes && opcoes.length > 0) {
+    return opcoes[Math.floor(Math.random() * opcoes.length)];
+  }
+  // Tenta sem comorbidade
+  const key2 = `${obj}_${freq}_${rest}_none`;
+  const opcoes2 = textos[key2];
+  if (opcoes2 && opcoes2.length > 0) {
+    return opcoes2[Math.floor(Math.random() * opcoes2.length)];
+  }
+  // Tenta só objetivo e frequência
+  const key3 = `${obj}_${freq}_none_none`;
+  const opcoes3 = textos[key3];
+  if (opcoes3 && opcoes3.length > 0) {
+    return opcoes3[Math.floor(Math.random() * opcoes3.length)];
+  }
+  return fallbacks[obj] || fallbacks.saude;
+}
 
 function show(id) {
   document.querySelectorAll('.step').forEach(s => s.classList.remove('on'));
@@ -327,6 +344,15 @@ function setProgress(step) {
   document.getElementById('prog').style.width = pct+'%';
   document.getElementById('prog-label').textContent = progressLabels[step-1] || 'CONCLUÍDO';
   document.getElementById('prog-steps').textContent = step < 5 ? `${step} de 4` : '✓';
+}
+
+function typeText(el, text, speed=16) {
+  el.textContent = '';
+  let i = 0;
+  const iv = setInterval(() => {
+    if (i < text.length) { el.textContent += text[i++]; }
+    else { clearInterval(iv); }
+  }, speed);
 }
 
 document.querySelectorAll('.opts').forEach(g => {
@@ -345,98 +371,47 @@ document.getElementById('b1').addEventListener('click', () => { show('s2'); setP
 document.getElementById('b2').addEventListener('click', () => { show('s3'); setProgress(3); });
 document.getElementById('b3').addEventListener('click', () => { show('s4'); setProgress(4); });
 
-document.getElementById('b4').addEventListener('click', async () => {
+document.getElementById('b4').addEventListener('click', () => {
   show('s-load'); setProgress(5);
-
-  const msgs = ['Analisando seu perfil...', 'Cruzando objetivos e restrições...', 'Consultando a IA...'];
+  const msgs = ['Analisando seu perfil...', 'Cruzando objetivos e restrições...', 'Montando o kit ideal...'];
   let mi = 0;
   const msgIv = setInterval(() => {
     if (mi < msgs.length) document.getElementById('load-msg').textContent = msgs[mi++];
   }, 900);
 
-  const kit = kits[ans['1']] || kits.saude;
-  const obj = labels.objetivo[ans['1']] || 'cuidar da saúde';
-  const freq = labels.freq[ans['2']] || 'treina regularmente';
-  const rest = labels.rest[ans['3']] || 'sem restrições';
-  const como = labels.como[ans['4']] || 'sem comorbidades';
-  const produtos = kit.prods.map(p => p.n).join(', ');
+  setTimeout(() => {
+    clearInterval(msgIv);
+    const obj = ans['1'] || 'saude';
+    const freq = ans['2'] || 'regular';
+    const rest = ans['3'] || 'none';
+    const como = ans['4'] || 'none';
+    const kit = kits[obj] || kits.saude;
+    const texto = getTexto(obj, freq, rest, como);
 
-  const prompt = `Você é a IA de suplementação do DessaFit, uma plataforma de treinos para mulheres. 
-Fale diretamente com a aluna em português brasileiro, de forma calorosa, simples e encorajadora — como uma amiga que entende de suplementos.
+    document.getElementById('kit-name').textContent = kit.name;
+    document.getElementById('kit-total').textContent = kit.total;
+    document.getElementById('prods').innerHTML = kit.prods.map((p,i) =>
+      `<div class="prod-card">
+        <div class="prod-num">${i+1}</div>
+        <div class="prod-info">
+          <div class="prod-name">${p.n}</div>
+          <div class="prod-why">${p.why}</div>
+          <div class="prod-brand">${p.brand.toUpperCase()}</div>
+        </div>
+        <div class="prod-price">${p.p}</div>
+      </div>`
+    ).join('');
 
-Perfil da aluna:
-- Objetivo: ${obj}
-- Frequência de treino: ${freq}
-- Restrição alimentar: ${rest}
-- Comorbidade: ${como}
-- Kit recomendado: ${produtos}
-
-Escreva UM parágrafo curto (3 a 4 frases no máximo) explicando:
-1. Por que esse kit faz sentido pro perfil específico dela
-2. O que ela vai sentir/perceber com o uso
-
-Seja direta, use linguagem simples, sem jargões técnicos. Não liste os produtos — só explique o raciocínio. Não use asteriscos nem formatação markdown.`;
-
-  let aiText = '';
-
-  try {
-    const resp = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_KEY}`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [{ parts: [{ text: prompt }] }],
-          generationConfig: { maxOutputTokens: 200, temperature: 0.8 }
-        })
-      }
-    );
-    const data = await resp.json();
-    aiText = data?.candidates?.[0]?.content?.parts?.[0]?.text || '';
-  } catch(e) {
-    aiText = '';
-  }
-
-  clearInterval(msgIv);
-
-  document.getElementById('kit-name').textContent = kit.name;
-  document.getElementById('kit-total').textContent = kit.total;
-  document.getElementById('prods').innerHTML = kit.prods.map((p, i) =>
-    `<div class="prod-card">
-      <div class="prod-num">${i+1}</div>
-      <div class="prod-info">
-        <div class="prod-name">${p.n}</div>
-        <div class="prod-why">${p.why}</div>
-        <div class="prod-brand">${p.brand.toUpperCase()}</div>
-      </div>
-      <div class="prod-price">${p.p}</div>
-    </div>`
-  ).join('');
-
-  const aiEl = document.getElementById('ai-text');
-  if (aiText) {
-    aiEl.textContent = '';
     show('s-result');
-    // Efeito de digitação
-    let i = 0;
-    const typeIv = setInterval(() => {
-      if (i < aiText.length) {
-        aiEl.textContent += aiText[i++];
-      } else {
-        clearInterval(typeIv);
-      }
-    }, 18);
-  } else {
-    aiEl.textContent = 'Com base no seu perfil, montamos o kit ideal pra te ajudar a alcançar seus objetivos com segurança e eficiência.';
-    show('s-result');
-  }
+    typeText(document.getElementById('ai-text'), texto, 14);
+  }, 2800);
 });
 
 document.getElementById('restart').addEventListener('click', () => {
   Object.keys(ans).forEach(k => delete ans[k]);
   document.querySelectorAll('.opt').forEach(o => o.classList.remove('sel'));
   document.querySelectorAll('.btn').forEach(b => b.classList.remove('on'));
-  document.getElementById('ai-text').innerHTML = '<div class="ai-typing"><span></span><span></span><span></span></div>';
+  document.getElementById('ai-text').textContent = '';
   show('s1'); setProgress(1);
 });
 
